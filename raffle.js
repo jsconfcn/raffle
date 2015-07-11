@@ -9,15 +9,16 @@ function random(count){
 
   read(function(err, data) {
     var i = 0;
+    var arr = [];
     while(i < count){
       var a = (Math.random()*600).toFixed(0);
       if(!~data.indexOf(a)){
-        data.push(a);
-        console.log(a);
+        arr.push(a);
         i++;
       }
     }
-    write(data, noop);
+    console.log('%d total \n%s', arr.length, arr.join(','));
+    write(data.concat(arr), noop);
   })
 }
 
