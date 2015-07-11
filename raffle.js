@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var fs = require('fs');
 
 var name = 'raffle.json';
@@ -6,19 +8,14 @@ var noop = function() {};
 function random(count){
 
   read(function(err, data) {
-    var dup = [];
-    for(var i=0;i < count; i ++){
+    var i = 0;
+    while(i < count){
       var a = (Math.random()*600).toFixed(0);
       if(!~data.indexOf(a)){
         data.push(a);
         console.log(a);
-      } else {
-        dup.push(a);
-        console.log('Lucky boy!!! Do it again!!');
+        i++;
       }
-    }
-    if (dup.length > 0) {
-      console.log('%s duplicate', dup.join(','))
     }
     write(data, noop);
   })
