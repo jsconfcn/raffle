@@ -8,11 +8,13 @@ var noop = function() {};
 function random(count){
 
   read(function(err, data) {
-    while(data.length < count){
+    var i = 0;
+    while(i < count){
       var a = (Math.random()*600).toFixed(0);
       if(!~data.indexOf(a)){
         data.push(a);
         console.log(a);
+        i++;
       }
     }
     write(data, noop);
