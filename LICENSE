@@ -1,13 +1,4 @@
-## Raffle Program For ShenJS 2015
 
-### Example
-````bash
-
-node ./raffle [ how_many_people | 0 ]
-
-````
-
-### MIT license
 Copyright (c) 2015 jsconf
 
 Permission is hereby granted, free of charge, to any person obtaining a copy

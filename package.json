@@ -1,0 +1,23 @@
+{
+  "name": "raffle",
+  "version": "1.0.0",
+  "description": "",
+  "main": "raffle.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jsconfcn/raffle.git"
+  },
+  "keywords": [
+    "raffle",
+    "random"
+  ],
+  "author": "jsconf",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jsconfcn/raffle/issues"
+  },
+  "homepage": "https://github.com/jsconfcn/raffle#readme"
+}

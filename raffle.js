@@ -1,40 +1,55 @@
 #!/usr/bin/env node
 
-var fs = require('fs');
+var fs    = require('fs');
+var path  = require('path')
 
-var name = 'raffle.json';
-var noop = function() {};
+function Raffle(people){
+  if(!(this instanceof Raffle)){
+    return new Raffle(people);
+  }
+  this.people    = people;
+  this.blacklist  = [ 0 ];
+  this.dbFile     = path.basename(__dirname, '.js') + '.json';
+};
 
-function random(count){
-
-  read(function(err, data) {
-    var i = 0;
-    while(i < count){
-      var a = (Math.random()*600).toFixed(0);
-      if(!~data.indexOf(a)){
-        data.push(a);
-        console.log(a);
-        i++;
-      }
+Raffle.prototype.random = function(size){
+  this.read();
+  var i = 0;
+  var luckyBoys = [];
+  while(this.blacklist.length < this.people &&  i < size){
+    var r = ((Math.random() * this.people).toFixed(0) + 1);// start zero;
+    if(!~this.blacklist.indexOf(r)){
+      console.log("> %s", r);
+      this.blacklist.push(r);
+      i++;
+    }else{
+      luckyBoys.push(r);
     }
-    write(data, noop);
-  })
-}
+  }
+  this.write();
 
-function write(data, cb) {
-  fs.writeFile(name, JSON.stringify(data), cb);
-}
+  if(luckyBoys.length > 0){
+    console.log(Array(81).join('=')); // terminal columns default is 80;
+    console.log("lucky boy is (if u need):");
+    console.log("%s", luckyBoys.join('\n'));
+  }
 
-function read(cb) {
-  fs.readFile(name, function(err, data) {
-    if (err) {
-      if (err.code == 'ENOENT') return cb(null, ["0"]);
-      return cb(err);
-    }
-    cb(null, JSON.parse(data.toString()));
-  })
-}
+  if(this.blacklist.length === this.people){
+    console.log('> WOW! nothing .');
+  }
+};
 
-var argv = process.argv;
-var count = argv[2];
-random(count || 0);
+Raffle.prototype.write = function(){
+  fs.writeFileSync(this.dbFile, JSON.stringify(this.blacklist));
+};
+
+Raffle.prototype.read = function(){
+  if(!fs.existsSync(this.dbFile)){
+    return this.write();
+  }
+  var content = fs.readFileSync(this.dbFile);
+  this.blacklist = JSON.parse(content);
+};
+
+//
+Raffle(600).random(process.argv[2] || 1);
