@@ -16,8 +16,8 @@ Raffle.prototype.random = function(size){
   this.read();
   var i = 0;
   var luckyBoys = [];
-  while(this.blacklist.length < this.people &&  i < size){
-    var r = ((Math.random() * this.people).toFixed(0) + 1);// start zero;
+  while(this.blacklist.length <= this.people &&  i < size){
+    var r = ((Math.random() * this.people).toFixed(0));
     if(!~this.blacklist.indexOf(r)){
       console.log("> %s", r);
       this.blacklist.push(r);
