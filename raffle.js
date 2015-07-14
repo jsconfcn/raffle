@@ -12,7 +12,7 @@ function random(count){
     var arr = [];
     while(i < count){
       var a = (Math.random()*600).toFixed(0);
-      if(!~data.indexOf(a)){
+      if(!~data.indexOf(a) && !~arr.indexOf(a)){
         arr.push(a);
         i++;
       }
