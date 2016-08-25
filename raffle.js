@@ -26,7 +26,7 @@ var totalBoys = 600;
  * @param  {Array} arr 所有参会者序号构成的数组
  * @return {Number}     幸运者的序号
  */
-function newLuckyBody(arr) {
+function newLuckyBoy(arr) {
 	var luckyNumber, boy;
 	// 之前中过奖的总人数
 	var luckyBoysCount = getPreviousLuckyBoysCount(arr);
@@ -104,7 +104,7 @@ function main() {
 	if(arr.length === 0) { return; }
 	count = count || 1;
 	while(count-- > 0) {
-		boy = newLuckyBody(arr);
+		boy = newLuckyBoy(arr);
 		if(typeof boy === "object") {
 			console.log(boy.no + " => 第 " + boy.times + " 次中奖！");
 		} else {
