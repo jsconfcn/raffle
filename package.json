@@ -1,0 +1,32 @@
+{
+  "name": "raffle",
+  "version": "0.1.0",
+  "description": "Raffle cli program for JSConf China",
+  "main": "raffle.js",
+  "engines": {
+    "npm": "^4.4.7"
+  },
+  "dependencies": {
+    "blessed": "^0.1.81",
+    "blessed-contrib": "^3.5.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jsconfcn/raffle.git"
+  },
+  "keywords": [
+    "Raffle",
+    "JSConf",
+    "China"
+  ],
+  "author": "xeodou@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jsconfcn/raffle/issues"
+  },
+  "homepage": "https://github.com/jsconfcn/raffle#readme"
+}
