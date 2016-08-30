@@ -4,7 +4,7 @@
   "description": "Raffle cli program for JSConf China",
   "main": "raffle.js",
   "engines": {
-    "npm": "^4.4.7"
+    "node": "^4.4.7"
   },
   "dependencies": {
     "blessed": "^0.1.81",
