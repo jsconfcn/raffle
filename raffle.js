@@ -71,7 +71,7 @@ const random = (luckies, length) => {
   }
   return res.map((w, i) => {
       return {
-        number: i,
+        number: i + 1,
         weight: w
       }
     })
